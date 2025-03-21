@@ -20,5 +20,18 @@ namespace CRUDSederhana
 
         }
 
+        /*Membuat fungsi untuk mengosongkan value dari setiap input di form*/
+        private void ClearForm()
+        {
+            txtNIM.Clear();
+            txtNama.Clear();
+            txtEmail.Clear();
+            txtAlamat.Clear();
+            txtTelepon.Clear();
+
+            txtNIM.Focus();
+        }
+
+
     }
 }
