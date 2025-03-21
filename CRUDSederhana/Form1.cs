@@ -130,11 +130,14 @@ namespace CRUDSederhana
                         conn.Close();
 
                     }
+                    /*jika kondisi tidak memenuhi artinya NIM exist, barulah kita tanyakan apakah ingin update data*/
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("NIM Ditemukan. Apakah Anda Ingin Update Data!", "Data Found", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                    }
+
 
                 }
-
-
-            }
         }
 
 
