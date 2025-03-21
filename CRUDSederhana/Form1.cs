@@ -230,6 +230,11 @@ namespace CRUDSederhana
                     }
 
                 }
+                /*Jika NIM belum dipilih atau value tidak diisi, tampilkan peringatan*/
+                else
+                {
+                    MessageBox.Show("Pilih data yang akan dihapus", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
