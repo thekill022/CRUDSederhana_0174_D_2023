@@ -133,7 +133,41 @@ namespace CRUDSederhana
                     /*jika kondisi tidak memenuhi artinya NIM exist, barulah kita tanyakan apakah ingin update data*/
                     else
                     {
-                        DialogResult result = MessageBox.Show("NIM Ditemukan. Apakah Anda Ingin Update Data!", "Data Found", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                        DialogResult result = MessageBox.Show("NIM Ditemukan. Apakah Anda Ingin Update Data!", "Data Found", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                        /*jika user setuju untuk update data, maka instruksi untuk update data akan dijalankan*/
+                        if (result == DialogResult.OK)
+                        {
+                            conn.Open();
+
+                            String query = "UPDATE Mahasiswa SET Nama = @Nama, Email = @Email, Telepon = @Telepon, Alamat = @Alamat WHERE NIM = @NIM";
+
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@Nama", txtNama.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text.Trim());
+                                cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
+
+                                int affectedRow = cmd.ExecuteNonQuery();
+
+                                if (affectedRow > 0)
+                                {
+                                    MessageBox.Show("Data Berhasil Di Update!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadData();
+                                    ClearForm();
+                                }
+                                conn.Close();
+
+                            }
+
+                        }
+                        else
+                        {
+                            return;
+                        }
+
                     }
 
 
