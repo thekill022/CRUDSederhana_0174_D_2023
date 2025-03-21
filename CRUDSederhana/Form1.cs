@@ -58,6 +58,33 @@ namespace CRUDSederhana
             }
         }
 
+        /*Membuat fungsi untuk menguji eksistensi data berdasarkan NIM yang diberikan*/
+        private int chkExistingData(String nim)
+        {
+            using (SqlConnection conn = new SqlConnection(connection))
+            {
+                conn.Open();
+                String query = "SELECT 1 FROM Mahasiswa WHERE NIM = @NIM";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                conn.Close();
+            }
+        }
+
 
     }
 }
