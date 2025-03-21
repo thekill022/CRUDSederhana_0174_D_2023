@@ -177,5 +177,12 @@ namespace CRUDSederhana
                 }
             }
         }
+
+        /*membuat handler jika tombol hapus di klik*/
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
