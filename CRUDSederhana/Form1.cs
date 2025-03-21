@@ -102,6 +102,35 @@ namespace CRUDSederhana
                     /*mengecek eksistensi data untuk memastikan tidak ada duplikasi*/
                     int isExist = chkExistingData(txtNIM.Text.Trim());
 
+                    /*jika data tidak ada maka akan mengembalikan nilai 0, barulah data boleh ditambah ke BD menggunakan isi dari kondisi dibawah*/
+                    if (isExist == 0)
+                    {
+
+                        conn.Open();
+                        String query = "INSERT INTO Mahasiswa(NIM, Nama, Email, Telepon, Alamat) VALUES (@NIM, @Nama, @Email, @Telepon, @Alamat)";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Nama", txtNama.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text.Trim());
+
+                            int rowAffectted = cmd.ExecuteNonQuery();
+
+                            if (rowAffectted > 0)
+                            {
+                                MessageBox.Show("Data berhasil ditambahkan!", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadData();
+                                ClearForm();
+                            }
+                        }
+
+                        conn.Close();
+
+                    }
+
                 }
 
 
