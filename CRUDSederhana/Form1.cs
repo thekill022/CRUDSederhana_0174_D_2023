@@ -181,7 +181,11 @@ namespace CRUDSederhana
         /*membuat handler jika tombol hapus di klik*/
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            
+            /*jika pengguna sudah klik row, atau field NIM tidak kosong, maka kondisi akan dijalankan */
+            if (dgvMahasiswa.SelectedRows.Count > 0 || txtNIM.Text.Trim() != "")
+            {
+
+            }
         }
 
     }
