@@ -184,7 +184,14 @@ namespace CRUDSederhana
             /*jika pengguna sudah klik row, atau field NIM tidak kosong, maka kondisi akan dijalankan */
             if (dgvMahasiswa.SelectedRows.Count > 0 || txtNIM.Text.Trim() != "")
             {
+                /*mengecek terlebih dahulu, apakah NIM exist, jika exist maka data bisa dihapus*/
+                if (chkExistingData(txtNIM.Text.Trim()) == 0)
+                {
 
+                    MessageBox.Show("NIM tidak ditemukan!", "NIM Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+
+                }
             }
         }
 
