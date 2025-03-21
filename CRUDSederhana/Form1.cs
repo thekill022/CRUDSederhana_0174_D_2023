@@ -15,9 +15,10 @@ namespace CRUDSederhana
             InitializeComponent();
         }
 
+        /*Meload data dari table Mahasiswa saat form pertama kali dibuka*/
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         /*Membuat fungsi untuk mengosongkan value dari setiap input di form*/
