@@ -169,11 +169,13 @@ namespace CRUDSederhana
                         }
 
                     }
-
-
                 }
+                /*Menambah handler catch untuk button tambah*/
+                catch (Exception)
+                {
+                    MessageBox.Show("Terjadi kesalahan saat menyimpan data. Pastikan koneksi dan data valid.", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
-
-
     }
 }
