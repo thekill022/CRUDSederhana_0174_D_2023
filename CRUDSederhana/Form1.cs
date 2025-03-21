@@ -192,6 +192,44 @@ namespace CRUDSederhana
                     return;
 
                 }
+                /*Jika user yakin ingin hapus dengan menekan ok, barulah data di hapus*/
+                DialogResult result = MessageBox.Show("Yakin Mau Hapus Data Ini?", "Delete Data", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    using (SqlConnection conn = new SqlConnection(connection))
+                    {
+                        try
+                        {
+                            String nim = txtNIM.Text.Trim();
+                            conn.Open();
+                            String query = "DELETE FROM Mahasiswa WHERE NIM = @NIM";
+
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@NIM", nim);
+
+                                int rowAffected = cmd.ExecuteNonQuery();
+
+                                if (rowAffected > 0)
+                                {
+                                    MessageBox.Show("Data Berhasil Di Hapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadData();
+                                    ClearForm();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Terjadi kesalahan saat menghapus data. Pastikan koneksi dan data valid.", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
             }
         }
 
