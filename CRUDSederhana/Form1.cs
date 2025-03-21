@@ -99,8 +99,12 @@ namespace CRUDSederhana
                         return;
                     }
 
+                    /*mengecek eksistensi data untuk memastikan tidak ada duplikasi*/
+                    int isExist = chkExistingData(txtNIM.Text.Trim());
+
                 }
-                
+
+
             }
         }
 
