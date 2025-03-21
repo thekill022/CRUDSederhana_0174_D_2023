@@ -238,5 +238,14 @@ namespace CRUDSederhana
             }
         }
 
+        /*membuat handler apabila button referesh diklik, yang terjadi data akan di SELECT ulang*/
+        private void btnReferesh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+
+            MessageBox.Show($"Jumlah Kolom : {dgvMahasiswa.ColumnCount}\nJumlah Baris : {dgvMahasiswa.RowCount}", "Debugging DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
     }
 }
