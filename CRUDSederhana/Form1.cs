@@ -88,7 +88,20 @@ namespace CRUDSederhana
         /*Membuat handler apabila button tambah diclick, button ini berguna untuk tambah atau update data*/
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            
+            using (SqlConnection conn = new SqlConnection(connection))
+            {
+                try
+                {
+                    /*error handler apabila ada value input yang kosong*/
+                    if (txtNIM.Text == "" || txtNama.Text == "" || txtEmail.Text == "" || txtTelepon.Text == "")
+                    {
+                        MessageBox.Show("Harap isi semua data!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }
+                
+            }
         }
 
 
