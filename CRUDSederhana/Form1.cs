@@ -85,6 +85,12 @@ namespace CRUDSederhana
             }
         }
 
+        /*Membuat handler apabila button tambah diclick, button ini berguna untuk tambah atau update data*/
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            
+        }
+
 
     }
 }
